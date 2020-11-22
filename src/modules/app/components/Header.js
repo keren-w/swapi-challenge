@@ -17,4 +17,5 @@ const HeaderWrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     font-size: 32px;
+    font-family: StarJediOutline;
 `;

@@ -9,12 +9,11 @@ import PartTwo from "./partTwo";
     const getDisplayedPart = useCallback((partDisplayed) => {
         switch(partDisplayed) {
             case 1: 
-            return <PartOne />;
+                return <PartOne data={questionsdata.highestPopulationVehicle}/>;
             case 2: 
-            return <PartTwo/>;
-            case 0:
+                return <PartTwo data={questionsdata.planetsPopulation}/>;
             default:
-            return;
+                return '';
         }
     });
     return (
@@ -35,6 +34,7 @@ export default ShowPart;
 const Wrapper = styled.div`
     height: 100%;
     width: 100%;
+    min-width: 200px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -46,8 +46,10 @@ const PartsNav = styled.div`
     justify-content: center;
     margin: 1rem 0;
 
-    @media (max-width: 300px) {
+    @media (max-width: 499px) {
         flex-direction: column;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
         >span {
             text-align: center;
         }
@@ -55,23 +57,24 @@ const PartsNav = styled.div`
 `;
 
 const PartLink = styled.span`
+    min-width: 20%;
     cursor: pointer;
-        background-color: ${props => props.isSelected ? `peru` : `lightGray`};
-        color: ${props => props.isSelected && `white`};
-        padding: 0.2rem 1.5rem;
-        :nth-child(2n) {
-            border-left: 1px solid black;
-        }
-
-        @media (max-width: 300px) {
-            text-align: center;
-            :nth-child(2n) {
-                border-top: 1px solid black;
-                border-left: 0;
-            }
-        }
+    background-color: ${props => props.isSelected && `peru`};
+    color: ${props => props.isSelected && `white`};
+    padding: 0.2rem 0;
+    text-align: center;
+    font-weight: bold;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    @media (max-width: 499px) {
+        min-width: unset;
+        border-top: 0;
+        border-bottom: 0;
+    }
 `;
 
 const PartWrapper = styled.div`
     flex: 1;
+    display: flex;
+    flex-direction: column;
 `;

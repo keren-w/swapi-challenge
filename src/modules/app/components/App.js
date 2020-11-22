@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import styled from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
 import Loader from './Loader';
 import {getAppData} from '../data/appData';
 import Header from "./Header";
 import ShowPart from "../../QuestionsView/components/showPart";
+import StarJediOutline from '../../../assets/fonts/Starjout.ttf';
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const [appData, setAppData] = useState(null);
 
-  if (isLoading) {
+  if (!appData) {
     getAppData().then(data => {
-        setIsLoading(false);
         setAppData(data);
       });
   }
 
     return (
         <AppWrapper>
+            <GlobalStyle/>
             <Header/>
-            { isLoading ? <Loader/> :  <ShowPart questionsdata={appData}/>}
+            { !appData ? <Loader/> :  <ShowPart questionsdata={appData}/>}
         </AppWrapper>
     );
 }
@@ -32,4 +32,17 @@ const AppWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @font-face {
+        font-family: StarJediOutline;
+        src: url('../../../assets/fonts/Starout.ttf') format('truetype');
+`;
+
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'StarJediOutline';
+    src: url(${StarJediOutline}) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
 `;
