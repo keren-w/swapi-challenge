@@ -10,9 +10,12 @@ export default () => {
             color="#00BFFF"
             height={100}
             width={100}
-            timeout={3000} //3 secs
         />
     </LoaderWrapper>
 }
 
-const LoaderWrapper = styled.div``;
+const LoaderWrapper = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: center;
+`;

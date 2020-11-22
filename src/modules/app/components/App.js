@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Loader from './Loader';
 import {getAppData} from '../data/appData';
 import Header from "./Header";
+import ShowPart from "../../QuestionsView/components/showPart";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +19,7 @@ const App = () => {
     return (
         <AppWrapper>
             <Header/>
-            { isLoading ? <Loader/> :  ''}
+            { isLoading ? <Loader/> :  <ShowPart questionsdata={appData}/>}
         </AppWrapper>
     );
 }
