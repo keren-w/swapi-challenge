@@ -28,6 +28,18 @@ const ContentWrapper = styled.div`
         flex-direction: column;
         margin-top: 1rem;
     }
+    @media (min-width: 799px) {
+        width: 80%;
+    }
+    @media (min-width: 999px) {
+        width: 60%;
+    }
+    @media (min-width: 1199px) {
+        width: 50%;
+    }
+    @media (min-width: 1399px) {
+        width: 40%;
+    }
 `;
 
 const LegendWrapper = styled.div`
